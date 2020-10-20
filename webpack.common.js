@@ -1,21 +1,27 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  // mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    chunkFilename: '[id].js',
     publicPath: '',
   },
-  devtool: 'eval-cheap-module-source-map',
+  resolve: {
+      extensions: ['.js', '.jsx']
+  },
+  // devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        // loader: 'babel-loader',
+        use: ['babel-loader'],
         exclude: /node_modules/,
       },
       {
@@ -46,10 +52,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: __dirname + '/src/index.html',
       filename: 'index.html',
       inject: 'body',
+      // title: 'Production',
     })
   ]
 }

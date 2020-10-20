@@ -1,16 +1,24 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": {
+    [
+      "@babel/preset-env", {
+        "targets": {
           "browsers": [
-              "> 1%",
-              "last 2 versions"
+            "> 1%",
+            "last 2 versions"
           ]
-      },
-      "useBuiltIns": "usage"
-    }],
-    "@babel/preset-react"
+        },
+        "useBuiltIns": "usage"
+      }
+    ],
+    // "@babel/preset-stage-2",
+    [ "@babel/preset-react" ]
   ],
+  "env": {
+    "development": {
+      "presets": [["@babel/preset-react", { "development": true }]]
+    }
+  },
   "plugins": [
     "@babel/plugin-proposal-class-properties"
   ]
