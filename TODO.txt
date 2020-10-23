@@ -1,2 +1,0 @@
-Configure .dev and .prod
-Currently webpack.config.js works, but prod is broke.

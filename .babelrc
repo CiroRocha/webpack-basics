@@ -1,7 +1,8 @@
 {
   "presets": [
+    "@babel/react",
     [
-      "@babel/preset-env", {
+      "@babel/env", {
         "targets": {
           "browsers": [
             "> 1%",
@@ -10,16 +11,11 @@
         },
         "useBuiltIns": "usage"
       }
-    ],
+    ]
     // "@babel/preset-stage-2",
-    [ "@babel/preset-react" ]
   ],
-  "env": {
-    "development": {
-      "presets": [["@babel/preset-react", { "development": true }]]
-    }
-  },
   "plugins": [
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-react-jsx"
   ]
 }

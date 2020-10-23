@@ -4,24 +4,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  // mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     chunkFilename: '[id].js',
-    publicPath: '',
+    publicPath: '/',
   },
   resolve: {
-      extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
-  // devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
-        // loader: 'babel-loader',
-        use: ['babel-loader'],
+        use: [{ loader: 'babel-loader' }],
         exclude: /node_modules/,
       },
       {
@@ -57,7 +54,6 @@ module.exports = {
       template: __dirname + '/src/index.html',
       filename: 'index.html',
       inject: 'body',
-      // title: 'Production',
     })
   ]
 }
